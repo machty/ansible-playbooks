@@ -2,11 +2,14 @@
 - hosts: all
   vars:
     home_directory: /Users/machty
-  tasks:  
+  tasks:
     - name: Install libraries with homebrew
       homebrew: name={{ item }} state=present
       with_items:
       - tmux
+      - reattach-to-user-namespace
+      - gpg
+      tags: [ brew ]
 
     - name: Install libraries with homebrew_cask
       homebrew_cask: name={{ item }} state=present
@@ -16,14 +19,13 @@
       - vlc
       - iterm2
       - rowanj-gitx
-      tags: [ cask ]
+      - postgres
+      tags: [ brew ]
 
     - name: setup vim
       action: git repo=https://github.com/carlhuda/janus.git dest={{ home_directory }}/.vim
       action: shell chdir={{ home_directory }}/.vim/ rake
       tags: [ vim ]
-
-
 
 
 
