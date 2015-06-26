@@ -1,0 +1,30 @@
+---
+- hosts: all
+  vars:
+    home_directory: /Users/machty
+  tasks:  
+    - name: Install libraries with homebrew
+      homebrew: name={{ item }} state=present
+      with_items:
+      - tmux
+
+    - name: Install libraries with homebrew_cask
+      homebrew_cask: name={{ item }} state=present
+      with_items:
+      - spotify
+      - openemu
+      - vlc
+      - iterm2
+      - rowanj-gitx
+      tags: [ cask ]
+
+    - name: setup vim
+      action: git repo=https://github.com/carlhuda/janus.git dest={{ home_directory }}/.vim
+      action: shell chdir={{ home_directory }}/.vim/ rake
+      tags: [ vim ]
+
+
+
+
+
+
