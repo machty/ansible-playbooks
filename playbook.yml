@@ -9,6 +9,10 @@
       - tmux
       - reattach-to-user-namespace
       - gpg
+      - redis
+      - ack
+      - watchman
+      - imagemagick
       tags: [ brew ]
 
     - name: Install libraries with homebrew_cask
@@ -20,6 +24,7 @@
       - iterm2
       - rowanj-gitx
       - postgres
+      - utorrent
       tags: [ brew ]
 
     - name: setup vim
