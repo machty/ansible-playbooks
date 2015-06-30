@@ -15,6 +15,10 @@
       - imagemagick
       tags: [ brew ]
 
+    - name: Install macvim
+      homebrew: name=macvim state=present install_options=override-system-vim
+      tags: [ brew ]
+
     - name: Install libraries with homebrew_cask
       homebrew_cask: name={{ item }} state=present
       with_items:
